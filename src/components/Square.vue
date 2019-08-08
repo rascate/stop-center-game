@@ -1,14 +1,19 @@
 <template>
   <div class="c-square">
-    {{ number }}
+    {{ getSquareState(number) }}
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Square',
   props: {
-    number: () => 0,
+    number: Number,
+  },
+  computed: {
+    ...mapGetters('board', ['getSquareState']),
   },
 };
 </script>
