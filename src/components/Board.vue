@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import Square from './Square.vue';
 
 export default {
@@ -16,6 +16,12 @@ export default {
   },
   computed: {
     ...mapState('board', ['board']),
+  },
+  methods: {
+    ...mapActions('board', ['initialize']),
+  },
+  mounted() {
+    this.initialize();
   },
 };
 </script>

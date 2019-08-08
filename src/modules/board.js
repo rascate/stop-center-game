@@ -8,6 +8,13 @@ export default {
       [0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0],
     ],
+    initialBoard: [
+      [1, 0, 0, 0, -1],
+      [1, 0, 0, 0, -1],
+      [1, 0, 0, 0, -1],
+      [1, 0, 0, 0, -1],
+      [1, 0, 0, 0, -1],
+    ],
   },
   getters: {
     getSquareState: state => (num) => {
@@ -18,8 +25,12 @@ export default {
   },
   mutations: {
     initialize: (state) => {
-      state.board.map(row => row.map(() => 0));
+      state.board = state.initialBoard.slice();
     },
   },
-  actions: {},
+  actions: {
+    initialize: ({ commit }) => {
+      commit('initialize');
+    },
+  },
 };
